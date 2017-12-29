@@ -43,7 +43,16 @@
    #index-banner .section {
      top: 0;
    }
+   .parallax-container{
+     height: 500px;
+   }
  }
+
+ @media only screen and (min-width: 600px) and (max-width: 992px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
  
  .icon-block {
    padding: 0 15px;
