@@ -3,9 +3,11 @@
     <div v-show="landingLoader">
       <RotateSquare2 class="landing-loader"></RotateSquare2>
     </div>
-    <div v-show="!landingLoader">  
+    <div v-show="!landingLoader">
       <Header :mobileMenu="mobileMenu"></Header>
-      <HomeBody></HomeBody>
+      <div class="row container">
+        {{msg}}
+      </div>
       <Footer></Footer>
     </div>
   </div>
@@ -14,12 +16,11 @@
 <script>
 import {RotateSquare2} from 'vue-loading-spinner'
 import Header from '../components/Header'
-import HomeBody from '../components/HomeBody'
 import Footer from '../components/Footer'
 export default {
-  name: 'Home',
+  name: 'Admin',
   data: () => ({
-    msg: 'Welcome to Home Page!',
+    msg: 'Welcome to Admin Page!',
     landingLoader: true
   }),
   props: {
@@ -37,7 +38,6 @@ export default {
   },
   components: {
     Header,
-    HomeBody,
     Footer,
     RotateSquare2
   },

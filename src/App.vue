@@ -8,7 +8,7 @@
       <ul>
         <li class="hide-on-large-only"><a class="btn-floating blue animated infinite pulse black-text" @click="menuShowBtn"><i class="material-icons">menu</i></a></li>
         <li><a class="btn-floating red animated infinite pulse black-text"><i class="material-icons">my_location</i></a></li>
-        <li><a class="btn-floating yellow animated infinite pulse black-text"><i class="material-icons">perm_identity</i></a></li>
+        <li><a class="btn-floating yellow animated infinite pulse black-text"><i class="material-icons">person_add</i></a></li>
         <li><a class="btn-floating green animated inifnte pulse black-text"><i class="material-icons">near_me</i></a></li>
       </ul>
     </div>

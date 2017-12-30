@@ -5,7 +5,7 @@
     $('.parallax').parallax();
     $('.fixed-action-btn').floatingActionButton({
       direction: 'top', // Direction menu comes out
-      hoverEnabled: true, // Hover enabled
+      hoverEnabled: false, // Hover enabled
       toolbarEnabled: false // Toolbar transition enabled
     });
 

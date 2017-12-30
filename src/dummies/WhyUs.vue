@@ -7,7 +7,7 @@
     </div>
     <div v-else class="animated fadeInUp">
         {{msg}}
-    </div>   
+    </div>
   </div>
 </template>
 
