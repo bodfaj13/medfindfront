@@ -16,12 +16,12 @@
               <label for="password">Password</label>
               <!-- <span class="helper-text" data-error="wrong" data-success="right"></span> -->
             </div>
-            <div class="col s12 m12 l12 card-action" @click="sendLogin">
-              <button class="waves-effect waves-light btn-large col s12 m12 l12">
-                <div class="col l2 s2 m2" v-if="preloaderSwitch">
+            <div class="col s12 m12 l12 card-action">
+              <button class="waves-effect waves-light btn-large col s12 m12 l12" @click="sendLogin" :class="{disabled: btnDisabled}">
+                <div class="col l4 offset-l4 s4 offset-s4 m4 offset-m4" v-if="preloaderSwitch">
                   <Preloader class="preloader"></Preloader>
                 </div>
-                <div class="col l8 s8 m8">
+                <div class="col l4 offset-l4 s4 offset-s4 m4 offset-m4">
                   login
                 </div>
               </button>
@@ -39,11 +39,14 @@ export default {
   name: 'AdminBody',
   data: () => ({
     msg: 'Welcome to AdminBody Component!',
-    preloaderSwitch: true
+    preloaderSwitch: false,
+    btnDisabled: false
   }),
   methods: {
     sendLogin (e) {
       e.preventDefault()
+      this.btnDisabled = true
+      this.preloaderSwitch = !this.preloaderSwitch
       console.log(`true from sendLogin`)
     }
   },

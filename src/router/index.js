@@ -2,7 +2,6 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/pages/Home'
 import UserGuide from '@/pages/UserGuide'
-import Users from '@/pages/Users'
 import Admin from '@/pages/Admin'
 import AddUser from '@/pages/AddUser'
 import Error from '@/pages/Error'
@@ -22,11 +21,6 @@ export default new Router({
       path: '/userguide',
       name: 'User Guide',
       component: UserGuide
-    },
-    {
-      path: '/users',
-      name: 'Users',
-      component: Users
     },
     {
       path: '/admin',

@@ -46,12 +46,12 @@
                         <label for="user_msg">Message</label>
                       </div>
                       <div class="col s12 m12 l12">
-                        <button class="waves-effect waves-light btn-large col s12 m12 l12" @click="sendMsg">
-                          <div class="col l2 s2 m2" v-show="preloaderSwitch">
+                        <button class="waves-effect waves-light btn-large col s12 m12 l12" @click="sendMsg" :class="{disabled: btnDisabled}">
+                          <div class="col l4 offset-l4 s4 offset-s4 m4 offset-m4" v-if="preloaderSwitch">
                             <Preloader class="preloader"></Preloader>
                           </div>
-                          <div class="col l8 s8 m8">
-                            send
+                          <div class="col l4 offset-l4 s4 offset-s4 m4 offset-m4" v-else>
+                            Send
                           </div>
                         </button>
                       </div>
@@ -72,11 +72,14 @@ export default {
   name: 'UserGuideBody',
   data: () => ({
     msg: 'Welcome to UserGuideBody Component!',
-    preloaderSwitch: true
+    preloaderSwitch: false,
+    btnDisabled: false
   }),
   methods: {
     sendMsg (e) {
       e.preventDefault()
+      this.btnDisabled = true
+      this.preloaderSwitch = !this.preloaderSwitch
       console.log(`true from sendMsg`)
     }
   },

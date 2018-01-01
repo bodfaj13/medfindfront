@@ -4,7 +4,7 @@
       <RotateSquare2 class="landing-loader"></RotateSquare2>
     </div>
     <div v-show="!landingLoader">
-      <Header :mobileMenu="mobileMenu"></Header>
+      <Header></Header>
       <BreadCrumb></BreadCrumb>
       <UserGuideBody></UserGuideBody>
       <Footer></Footer>
@@ -25,12 +25,6 @@ export default {
     msg: 'Welcome to User Guide Page!',
     landingLoader: true
   }),
-  props: {
-    mobileMenu: {
-      type: Boolean,
-      default: false
-    }
-  },
   methods: {
     showLoader (landingLoader) {
       setTimeout((landingLoader) => {

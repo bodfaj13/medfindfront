@@ -21,12 +21,12 @@
               <input id="contact" type="text" class="validate">
               <label for="contact">Contact</label>
             </div>
-            <div class="col s12 m12 l12 card-action" @click="sendAddUser">
-              <button class="waves-effect waves-light btn-large col s12 m12 l12">
-                <div class="col l4 offset-l4" v-if="preloaderSwitch">
+            <div class="col s12 m12 l12 card-action">
+              <button class="waves-effect waves-light btn-large col s12 m12 l12" @click="sendAddUser" :class="{disabled: btnDisabled}">
+                <div class="col l4 offset-l4 s4 offset-s4 m4 offset-m4" v-if="preloaderSwitch">
                   <Preloader class="preloader"></Preloader>
                 </div>
-                <div class="col l4 offset-l4" v-else>
+                <div class="col l4 offset-l4 s4 offset-s4 m4 offset-m4" v-else>
                   Send
                 </div>
               </button>
@@ -44,11 +44,13 @@ export default {
   name: 'AddUserBody',
   data: () => ({
     msg: 'Welcome to AddUserBody Component!',
-    preloaderSwitch: false
+    preloaderSwitch: false,
+    btnDisabled: false
   }),
   methods: {
     sendAddUser (e) {
       e.preventDefault()
+      this.btnDisabled = true
       this.preloaderSwitch = !this.preloaderSwitch
       console.log(`true from sendAddUser`)
     }

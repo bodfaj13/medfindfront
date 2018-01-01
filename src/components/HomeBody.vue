@@ -8,7 +8,7 @@
           <div class="row center container">
             <img src="../assets/img/devices.png" class="jumboImg" alt="Unsplashed background img 1">
             <br>
-            <a class="waves-effect waves-light btn-large red"><i class="material-icons left">local_hospital</i>Emergency</a>
+            <a class="waves-effect waves-light btn-large red"><i class="material-icons left">my_location</i>Emergency</a>
           </div>
           <br><br>
         </div>
