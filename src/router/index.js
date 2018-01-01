@@ -4,6 +4,7 @@ import Home from '@/pages/Home'
 import UserGuide from '@/pages/UserGuide'
 import Users from '@/pages/Users'
 import Admin from '@/pages/Admin'
+import AddUser from '@/pages/AddUser'
 import Error from '@/pages/Error'
 
 Vue.use(Router)
@@ -14,19 +15,28 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'Home',
       component: Home
     },
     {
       path: '/userguide',
+      name: 'User Guide',
       component: UserGuide
     },
     {
       path: '/users',
+      name: 'Users',
       component: Users
     },
     {
       path: '/admin',
+      name: 'Admin',
       component: Admin
+    },
+    {
+      path: '/adduser',
+      name: 'User Registration',
+      component: AddUser
     },
     {
       path: '*',

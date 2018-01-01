@@ -33,7 +33,7 @@ export default {
     showLoader (landingLoader) {
       setTimeout((landingLoader) => {
         this.landingLoader = false
-      }, 5000)
+      }, 2000)
     }
   },
   components: {

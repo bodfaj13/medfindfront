@@ -5,7 +5,10 @@
     </div>
     <div v-show="!landingLoader">
       <Header :mobileMenu="mobileMenu"></Header>
-      <HomeBody></HomeBody>
+      <BreadCrumb></BreadCrumb>
+      <div class="row container">
+        <AddUserBody></AddUserBody>
+      </div>
       <Footer></Footer>
     </div>
   </div>
@@ -14,13 +17,14 @@
 <script>
 import {RotateSquare2} from 'vue-loading-spinner'
 import Header from '../components/Header'
-import HomeBody from '../components/HomeBody'
 import Footer from '../components/Footer'
+import BreadCrumb from '../components/BreadCrumb'
+import AddUserBody from '../components/AddUserBody'
 
 export default {
-  name: 'Home',
+  name: 'AddUser',
   data: () => ({
-    msg: 'Welcome to Home Page!',
+    msg: 'Welcome to AddUser page!',
     landingLoader: true
   }),
   props: {
@@ -38,9 +42,10 @@ export default {
   },
   components: {
     Header,
-    HomeBody,
     Footer,
-    RotateSquare2
+    RotateSquare2,
+    BreadCrumb,
+    AddUserBody
   },
   created: function () {
     this.showLoader()
@@ -49,7 +54,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style scoped>
   .landing-loader{
     margin: 0 auto;
     top: 300px;

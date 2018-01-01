@@ -1,6 +1,6 @@
 <template>
-  <div class="content">
-    <div id="index-banner" class="parallax-container animated fadeIn">
+  <div class="content animated fadeInUp">
+    <div id="index-banner" class="parallax-container">
       <div class="section no-pad-bot">
         <div class="container">
           <br><br>
@@ -8,13 +8,12 @@
           <div class="row center container">
             <img src="../assets/img/devices.png" class="jumboImg" alt="Unsplashed background img 1">
             <br>
-            <a class="waves-effect waves-light btn-large"><i class="material-icons left">help_outline</i>User Guide</a>
-            <a class="waves-effect waves-light btn-large"><i class="material-icons right">local_hospital</i>Emergency</a>
+            <a class="waves-effect waves-light btn-large red"><i class="material-icons left">local_hospital</i>Emergency</a>
           </div>
           <br><br>
         </div>
       </div>
-      <div class="parallax"><img src="https://images.unsplash.com/photo-1502740479091-635887520276?auto=format&fit=crop&w=1049&q=80" alt="Unsplashed background img 1"></div>
+      <div class="parallax"><img src="../assets/img/zhen-hu-340739.jpg" alt="Unsplashed background img 1"></div>
     </div>
 
     <HomeBodyInside></HomeBodyInside>

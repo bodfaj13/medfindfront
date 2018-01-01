@@ -5,8 +5,9 @@
     </div>
     <div v-show="!landingLoader">
       <Header :mobileMenu="mobileMenu"></Header>
+      <BreadCrumb></BreadCrumb>
       <div class="row container">
-        {{msg}}
+         <AdminBody></AdminBody>
       </div>
       <Footer></Footer>
     </div>
@@ -17,6 +18,9 @@
 import {RotateSquare2} from 'vue-loading-spinner'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import BreadCrumb from '../components/BreadCrumb'
+import AdminBody from '../components/AdminBody'
+
 export default {
   name: 'Admin',
   data: () => ({
@@ -33,13 +37,15 @@ export default {
     showLoader (landingLoader) {
       setTimeout((landingLoader) => {
         this.landingLoader = false
-      }, 5000)
+      }, 2000)
     }
   },
   components: {
     Header,
     Footer,
-    RotateSquare2
+    RotateSquare2,
+    AdminBody,
+    BreadCrumb
   },
   created: function () {
     this.showLoader()

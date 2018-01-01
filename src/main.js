@@ -4,11 +4,8 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 // import VueMaterial from 'vue-material'
-// import VueParticles from 'vue-particles'
 // import 'vue-material/dist/vue-material.min.css'
-// import 'vue-material/dist/theme/default.css'
 
-// Vue.use(VueParticles)
 // Vue.use(VueMaterial)
 Vue.config.productionTip = false
 
