@@ -31,7 +31,7 @@
       </div>
       <div class="footer-copyright">
         <div class="container">
-          Project by <a class="brown-text text-lighten-4" href="#">Bello Ajibola</a>
+          Project by <a class="brown-text text-lighten-4" href="#">{{ projectBy| toLowercase}}</a>
         </div>
       </div>
     </footer>
@@ -42,7 +42,8 @@
 export default {
   name: 'Footer',
   data: () => ({
-    msg: 'Welcome to Footer Component!'
+    msg: 'Welcome to Footer Component!',
+    projectBy: 'Bello Ajibola'
   })
 }
 </script>

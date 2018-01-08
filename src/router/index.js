@@ -4,6 +4,8 @@ import Home from '@/pages/Home'
 import UserGuide from '@/pages/UserGuide'
 import Admin from '@/pages/Admin'
 import AddUser from '@/pages/AddUser'
+import MedFind from '@/pages/MedFind'
+import Dashboard from '@/pages/Dashboard'
 import Error from '@/pages/Error'
 
 Vue.use(Router)
@@ -28,9 +30,19 @@ export default new Router({
       component: Admin
     },
     {
+      path: '/dashboard',
+      name: 'Dashboard',
+      component: Dashboard
+    },
+    {
       path: '/adduser',
       name: 'User Registration',
       component: AddUser
+    },
+    {
+      path: '/medfind',
+      name: 'MedFind',
+      component: MedFind
     },
     {
       path: '*',

@@ -1,0 +1,8 @@
+// global mixin: in the main.js file
+```
+ Vue.mixin({
+   created () {
+     console.log(`Global Mixin - Created Hook`)
+   }
+})
+```

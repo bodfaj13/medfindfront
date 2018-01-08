@@ -7,7 +7,36 @@
           <p>Here is a quick user quide to help you around the application</p>
           <div class="steps">
             <div class="row">
-
+                <div class="stepper">
+                  <div class="btnStepper">
+                    <a class="waves-effect waves-teal btn-flat col l12 s12 m12" @click.prevent="collapseStepper('stepper1')" id="stepper1">Step 1</a>
+                  </div>
+                  <div class="stepperContent col l12 s12 m12 animated fadeIn" v-if="stepper1">
+                    We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+                    <br>
+                    We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+                  </div>
+                </div>
+                <div class="stepper">
+                  <div class="btnStepper">
+                    <a class="waves-effect waves-teal btn-flat col l12 s12 m12" @click.prevent="collapseStepper('stepper2')"id="stepper2">Step 2</a>
+                  </div>
+                  <div class="stepperContent col l12 s12 m12 animated fadeIn" v-if="stepper2">
+                    We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+                    <br>
+                    We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+                  </div>
+                </div>
+                <div class="stepper">
+                  <div class="btnStepper">
+                    <a class="waves-effect waves-teal btn-flat col l12 s12 m12" @click.prevent="collapseStepper('stepper3')" id="stepper3">Step 3</a>
+                  </div>
+                  <div class="stepperContent col l12 s12 m12 animated fadeIn" v-if="stepper3">
+                    We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+                    <br>
+                    We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+                  </div>
+                </div>
             </div>
           </div>
         </div>
@@ -42,7 +71,7 @@
                       </div>
                       <div class="input-field col s12 m12 l12">
                         <i class="material-icons prefix">textsms</i>
-                        <textarea id="user_msg" class="materialize-textarea"></textarea>
+                        <textarea id="user_msg" class="materialize-textarea" style="white-spacing: pre"></textarea>
                         <label for="user_msg">Message</label>
                       </div>
                       <div class="col s12 m12 l12">
@@ -73,7 +102,10 @@ export default {
   data: () => ({
     msg: 'Welcome to UserGuideBody Component!',
     preloaderSwitch: false,
-    btnDisabled: false
+    btnDisabled: false,
+    stepper1: true,
+    stepper2: false,
+    stepper3: false
   }),
   methods: {
     sendMsg (e) {
@@ -81,6 +113,25 @@ export default {
       this.btnDisabled = true
       this.preloaderSwitch = !this.preloaderSwitch
       console.log(`true from sendMsg`)
+    },
+    collapseStepper (stepperNo) {
+      switch (stepperNo) {
+        case 'stepper1':
+          this.stepper1 = !this.stepper1
+          this.stepper2 = false
+          this.stepper3 = false
+          break
+        case 'stepper2':
+          this.stepper1 = false
+          this.stepper2 = !this.stepper2
+          this.stepper3 = false
+          break
+        case 'stepper3':
+          this.stepper1 = false
+          this.stepper2 = false
+          this.stepper3 = !this.stepper3
+          break
+      }
     }
   },
   components: {
@@ -96,5 +147,11 @@ export default {
   }
   .preloader{
     margin-top: 8px;
+  }
+  .stepper{
+    padding-bottom: 20px;
+  }
+  .stepperContent{
+    border-left: 2px solid teal;
   }
 </style>

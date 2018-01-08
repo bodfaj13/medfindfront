@@ -20,29 +20,20 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import BreadCrumb from '../components/BreadCrumb'
 import AddUserBody from '../components/AddUserBody'
+import {pageLoaderMixin} from '../mixins/pageLoaderMixin'
 
 export default {
   name: 'AddUser',
+  mixins: [pageLoaderMixin],
   data: () => ({
-    msg: 'Welcome to AddUser page!',
-    landingLoader: true
+    msg: 'Welcome to AddUser page!'
   }),
-  methods: {
-    showLoader (landingLoader) {
-      setTimeout((landingLoader) => {
-        this.landingLoader = false
-      }, 2000)
-    }
-  },
   components: {
     Header,
     Footer,
     RotateSquare2,
     BreadCrumb,
     AddUserBody
-  },
-  created: function () {
-    this.showLoader()
   }
 }
 </script>

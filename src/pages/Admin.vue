@@ -20,29 +20,20 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import BreadCrumb from '../components/BreadCrumb'
 import AdminBody from '../components/AdminBody'
+import {pageLoaderMixin} from '../mixins/pageLoaderMixin'
 
 export default {
   name: 'Admin',
+  mixins: [pageLoaderMixin],
   data: () => ({
-    msg: 'Welcome to Admin Page!',
-    landingLoader: true
+    msg: 'Welcome to Admin Page!'
   }),
-  methods: {
-    showLoader (landingLoader) {
-      setTimeout((landingLoader) => {
-        this.landingLoader = false
-      }, 2000)
-    }
-  },
   components: {
     Header,
     Footer,
     RotateSquare2,
     AdminBody,
     BreadCrumb
-  },
-  created: function () {
-    this.showLoader()
   }
 }
 </script>

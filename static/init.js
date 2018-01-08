@@ -8,6 +8,7 @@
       hoverEnabled: false, // Hover enabled
       toolbarEnabled: false // Toolbar transition enabled
     });
+    $('select').select();
 
 
   }); // end of document ready

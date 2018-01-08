@@ -3,8 +3,8 @@
     <nav class="teal">
       <div class="nav-wrapper container">
         <div class="col s12">
-          <a href="#" class="breadcrumb">Medfind</a>
-          <a href="#" class="breadcrumb">{{this.$route.name}}</a>
+          <a class="breadcrumb">Medfind</a>
+          <a class="breadcrumb">{{this.$route.name}}</a>
         </div>
       </div>
     </nav>

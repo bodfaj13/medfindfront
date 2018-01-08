@@ -4,8 +4,10 @@
       <RotateSquare2 class="landing-loader"></RotateSquare2>
     </div>
     <div v-show="!landingLoader">
-      <Header></Header>
-      <HomeBody></HomeBody>
+      <Header :mobileMenu="mobileMenu"></Header>
+      <div class="row container">
+        {{msg}}
+      </div>
       <Footer></Footer>
     </div>
   </div>
@@ -14,19 +16,23 @@
 <script>
 import {RotateSquare2} from 'vue-loading-spinner'
 import Header from '../components/Header'
-import HomeBody from '../components/HomeBody'
 import Footer from '../components/Footer'
 import {pageLoaderMixin} from '../mixins/pageLoaderMixin'
 
 export default {
-  name: 'Home',
+  name: 'Users',
   mixins: [pageLoaderMixin],
   data: () => ({
-    msg: 'Welcome to Home Page!'
+    msg: 'Welcome to Users Page!'
   }),
+  props: {
+    mobileMenu: {
+      type: Boolean,
+      default: false
+    }
+  },
   components: {
     Header,
-    HomeBody,
     Footer,
     RotateSquare2
   }

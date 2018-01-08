@@ -7,12 +7,12 @@
             <span class="card-title">Admin Login</span>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">account_box</i>
-              <input id="username" type="text" class="validate">
+              <input id="username" type="text" class="validate" v-model="user.username">
               <label for="username">Username</label>
             </div>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">lock</i>
-              <input id="password" type="password" class="validate">
+              <input id="password" type="password" class="validate" v-model="user.password">
               <label for="password">Password</label>
               <!-- <span class="helper-text" data-error="wrong" data-success="right"></span> -->
             </div>
@@ -40,7 +40,11 @@ export default {
   data: () => ({
     msg: 'Welcome to AdminBody Component!',
     preloaderSwitch: false,
-    btnDisabled: false
+    btnDisabled: false,
+    user: {
+      username: '',
+      password: ''
+    }
   }),
   methods: {
     sendLogin (e) {
@@ -48,6 +52,9 @@ export default {
       this.btnDisabled = true
       this.preloaderSwitch = !this.preloaderSwitch
       console.log(`true from sendLogin`)
+      setTimeout(() => {
+        window.location.assign('/dashboard')
+      }, 3000)
     }
   },
   components: {

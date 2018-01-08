@@ -18,29 +18,20 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import UserGuideBody from '../components/UserGuideBody'
 import BreadCrumb from '../components/BreadCrumb'
+import {pageLoaderMixin} from '../mixins/pageLoaderMixin'
 
 export default {
   name: 'UserGuide',
+  mixins: [pageLoaderMixin],
   data: () => ({
-    msg: 'Welcome to User Guide Page!',
-    landingLoader: true
+    msg: 'Welcome to User Guide Page!'
   }),
-  methods: {
-    showLoader (landingLoader) {
-      setTimeout((landingLoader) => {
-        this.landingLoader = false
-      }, 2000)
-    }
-  },
   components: {
     Header,
     Footer,
     RotateSquare2,
     UserGuideBody,
     BreadCrumb
-  },
-  created: function () {
-    this.showLoader()
   }
 }
 </script>
