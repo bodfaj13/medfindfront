@@ -7,12 +7,12 @@
             <span class="card-title">Admin Login</span>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">account_box</i>
-              <input id="username" type="text" class="validate" v-model="user.username">
+              <input id="username" type="text" class="validate" v-model="Email">
               <label for="username">Username</label>
             </div>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">lock</i>
-              <input id="password" type="password" class="validate" v-model="user.password">
+              <input id="password" type="password" class="validate" v-model="Password">
               <label for="password">Password</label>
               <!-- <span class="helper-text" data-error="wrong" data-success="right"></span> -->
             </div>
@@ -35,26 +35,42 @@
 
 <script>
 import Preloader from './Preloader'
+import AuthService from '../services/AuthService'
+
 export default {
   name: 'AdminBody',
   data: () => ({
     msg: 'Welcome to AdminBody Component!',
     preloaderSwitch: false,
     btnDisabled: false,
-    user: {
-      username: '',
-      password: ''
-    }
+    Email: '',
+    Password: '',
+    error: ''
   }),
   methods: {
-    sendLogin (e) {
+    async sendLogin (e) {
       e.preventDefault()
       this.btnDisabled = true
-      this.preloaderSwitch = !this.preloaderSwitch
-      console.log(`true from sendLogin`)
-      setTimeout(() => {
-        window.location.assign('/dashboard')
-      }, 3000)
+      this.preloaderSwitch = true
+      try {
+        const response = await AuthService.loginAdmin({
+          email: this.Email,
+          password: this.Password
+        })
+        console.log(response)
+        this.$store.dispatch('setToken', response.data.token)
+        setTimeout(() => {
+          this.btnDisabled = false
+          this.preloaderSwitch = false
+        }, 3000)
+        this.$router.push('/dashboard')
+      } catch (error) {
+        this.error = error.response.data.error
+        setTimeout(() => {
+          this.btnDisabled = false
+          this.preloaderSwitch = false
+        }, 3000)
+      }
     }
   },
   components: {

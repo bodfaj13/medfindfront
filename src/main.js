@@ -3,15 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import {sync} from 'vuex-router-sync'
+import store from '@/store/store'
 
 Vue.config.productionTip = false
 Vue.filter('toLowercase', function (value) {
   return value.toLowerCase()
 })
+sync(store, router)
 
 /* eslint-disable no-new */
 new Vue({
   router,
+  store,
   template: '<App/>',
   components: { App }
 }).$mount('#app')

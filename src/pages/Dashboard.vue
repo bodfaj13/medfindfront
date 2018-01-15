@@ -18,7 +18,8 @@ export default {
   methods: {
     logOut (e) {
       e.preventDefault()
-      window.location.assign('/admin')
+      this.$store.dispatch('setToken', null)
+      this.$router.push('/admin')
     }
   },
   components: {
