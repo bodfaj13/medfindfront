@@ -43,7 +43,6 @@
 <script>
 import Preloader from './Preloader'
 import AuthService from '../services/AuthService'
-import regex from '../assets/regex'
 
 export default {
   name: 'AddUserBody',
@@ -132,9 +131,6 @@ export default {
   },
   components: {
     Preloader
-  },
-  mounted: function () {
-    console.log(regex.emailRegex)
   }
 }
 </script>

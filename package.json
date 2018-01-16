@@ -17,6 +17,7 @@
     "vue-content-placeholders": "^0.2.1",
     "vue-loading-spinner": "^1.0.11",
     "vue-material": "^1.0.0-beta-7",
+    "vue-materialize-datatable": "^0.7.0",
     "vue-particles": "^1.0.9",
     "vue-router": "^3.0.1",
     "vue-swal": "0.0.6",
