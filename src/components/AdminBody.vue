@@ -59,18 +59,18 @@ export default {
         })
         console.log(response)
         this.$store.dispatch('setToken', response.data.token)
-        setTimeout(() => {
-          this.btnDisabled = false
-          this.preloaderSwitch = false
-        }, 3000)
+        this.timeOut()
         this.$router.push('/dashboard')
       } catch (error) {
         this.error = error.response.data.error
-        setTimeout(() => {
-          this.btnDisabled = false
-          this.preloaderSwitch = false
-        }, 3000)
+        this.timeOut()
       }
+    },
+    timeOut () {
+      setTimeout(() => {
+        this.btnDisabled = false
+        this.preloaderSwitch = false
+      }, 3000)
     }
   },
   components: {

@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import VueSwal from 'vue-swal'
 import {sync} from 'vuex-router-sync'
 import store from '@/store/store'
 
@@ -11,6 +12,7 @@ Vue.filter('toLowercase', function (value) {
   return value.toLowerCase()
 })
 sync(store, router)
+Vue.use(VueSwal)
 
 /* eslint-disable no-new */
 new Vue({

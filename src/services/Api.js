@@ -2,6 +2,6 @@ import axios from 'axios'
 
 export default () => {
   return axios.create({
-    baseURL: 'http://localhost:3000/api/'
+    baseURL: process.env.PORT ? 'https://medfindback.herokuapp.com/api/' : 'http://localhost:3000/api/'
   })
 }
