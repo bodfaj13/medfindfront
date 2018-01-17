@@ -1,14 +1,11 @@
 <template>
   <div class="content">
-    <BreadCrumbV2>
-      <a @click="logOut" class="waves-effect waves-light btn"><i class="material-icons icon-sumfin">settings_power</i></a>
-    </BreadCrumbV2>
-
+    <DashboardBody/>
   </div>
 </template>
 
 <script>
-import BreadCrumbV2 from '../components/BreadCrumbV2'
+import DashboardBody from '../components/DashboardBody'
 
 export default {
   name: 'Dashboard',
@@ -23,7 +20,7 @@ export default {
     }
   },
   components: {
-    BreadCrumbV2
+    DashboardBody
   }
 }
 </script>

@@ -7,21 +7,21 @@
             <span class="card-title">Register With Us</span>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">account_circle</i>
-              <input id="username" type="text" v-model="Fullname">
-              <label for="username">Fullname</label>
-              <span class="helper-text red-text right" data-error="wrong" data-success="right" v-if="error_Fullname">{{error_Fullname}}</span>
+              <input id="user_fullname" type="text" v-model="Fullname">
+              <label for="user_fullname">Fullname</label>
+              <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Fullname">{{error_Fullname}}</span>
             </div>
             <div class="input-field col s12 m6 l12">
               <i class="material-icons prefix">email</i>
               <input id="user_email" type="email"  v-model="Email">
               <label for="user_email">Email</label>
-              <span class="helper-text red-text right" data-error="wrong" data-success="right" v-if="error_Email">{{error_Email}}</span>
+              <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Email">{{error_Email}}</span>
             </div>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">call</i>
-              <input id="contact" type="text" v-model="Contact">
-              <label for="contact">Contact</label>
-              <span class="helper-text red-text right" data-error="wrong" data-success="right" v-if="error_Contact">{{error_Contact}}</span>
+              <input id="user_contact" type="text" v-model="Contact">
+              <label for="user_contact">Contact</label>
+              <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Contact">{{error_Contact}}</span>
             </div>
             <div class="col s12 m12 l12 card-action">
               <button class="waves-effect waves-light btn-large col s12 m12 l12" @click="sendAddUser" :class="{disabled: btnDisabled}">

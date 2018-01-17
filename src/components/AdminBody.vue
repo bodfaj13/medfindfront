@@ -7,14 +7,15 @@
             <span class="card-title">Admin Login</span>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">account_box</i>
-              <input id="username" type="text" class="validate" v-model="Email">
-              <label for="username">Username</label>
+              <input id="email" type="text" v-model="Email">
+              <label for="email">Email</label>
+              <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Email">{{error_Email}}</span>
             </div>
             <div class="input-field col s12 m12 l12">
               <i class="material-icons prefix">lock</i>
-              <input id="password" type="password" class="validate" v-model="Password">
+              <input id="password" type="password" v-model="Password">
               <label for="password">Password</label>
-              <!-- <span class="helper-text" data-error="wrong" data-success="right"></span> -->
+              <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Password">{{error_Password}}</span>
             </div>
             <div class="col s12 m12 l12 card-action">
               <button class="waves-effect waves-light btn-large col s12 m12 l12" @click="sendLogin" :class="{disabled: btnDisabled}">
@@ -45,24 +46,48 @@ export default {
     btnDisabled: false,
     Email: '',
     Password: '',
-    error: ''
+    error_Email: '',
+    error_Password: '',
+    error: '',
+    loginSuccess: ''
   }),
   methods: {
     async sendLogin (e) {
       e.preventDefault()
+      this.error_Password = ''
+      this.error_Email = ''
       this.btnDisabled = true
       this.preloaderSwitch = true
-      try {
-        const response = await AuthService.loginAdmin({
-          email: this.Email,
-          password: this.Password
-        })
-        console.log(response)
-        this.$store.dispatch('setToken', response.data.token)
-        this.timeOut()
-        this.$router.push('/dashboard')
-      } catch (error) {
-        this.error = error.response.data.error
+      var go = true
+      if (this.Email.length === 0) {
+        this.error_Email = 'Email field is required'
+        go = false
+      }
+      if (this.Password.length === 0) {
+        this.error_Password = 'Password field is required'
+        go = false
+      }
+      if (go === true) {
+        try {
+          const response = await AuthService.loginAdmin({
+            email: this.Email,
+            password: this.Password
+          })
+          console.log(response)
+          this.loginSuccess = response.data.success
+          this.$store.dispatch('setToken', response.data.token)
+          this.timeOut()
+          this.alert()
+          setTimeout(() => {
+            this.$router.push('/dashboard')
+          }, 2000)
+        } catch (error) {
+          this.error = error.response.data.error
+          this.error_Email = error.response.data.error_Email
+          this.error_Password = error.response.data.error_Password
+          this.timeOut()
+        }
+      } else {
         this.timeOut()
       }
     },
@@ -70,7 +95,10 @@ export default {
       setTimeout(() => {
         this.btnDisabled = false
         this.preloaderSwitch = false
-      }, 3000)
+      }, 2300)
+    },
+    alert () {
+      this.$swal(this.loginSuccess, '', 'success')
     }
   },
   components: {

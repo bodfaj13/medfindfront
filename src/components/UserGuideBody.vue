@@ -60,19 +60,21 @@
                     <div class="row">
                       <div class="input-field col s12 m6 l12">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="user_fullname" type="text" class="validate">
+                        <input id="user_fullname" type="text" v-model="Fullname">
                         <label for="user_fullname">Full Name</label>
+                        <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Fullname">{{error_Fullname}}</span>
                       </div>
                       <div class="input-field col s12 m6 l12">
                         <i class="material-icons prefix">email</i>
-                        <input id="user_email" type="email" class="validate">
+                        <input id="user_email" type="email" v-model="Email">
                         <label for="user_email">Email</label>
-                        <!-- <span class="helper-text" data-error="wrong" data-success="right"></span> -->
+                        <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Email">{{error_Email}}</span>
                       </div>
                       <div class="input-field col s12 m12 l12">
                         <i class="material-icons prefix">textsms</i>
-                        <textarea id="user_msg" class="materialize-textarea" style="white-spacing: pre"></textarea>
+                        <textarea id="user_msg" class="materialize-textarea" style="white-spacing: pre" v-model="Message"></textarea>
                         <label for="user_msg">Message</label>
+                        <span class="helper-text red-text right animated bounceIn" data-error="wrong" data-success="right" v-if="error_Message">{{error_Message}}</span>
                       </div>
                       <div class="col s12 m12 l12">
                         <button class="waves-effect waves-light btn-large col s12 m12 l12" @click="sendMsg" :class="{disabled: btnDisabled}">
@@ -97,6 +99,8 @@
 
 <script>
 import Preloader from './Preloader'
+import UserSendContact from '../services/UserSendContact'
+
 export default {
   name: 'UserGuideBody',
   data: () => ({
@@ -105,14 +109,61 @@ export default {
     btnDisabled: false,
     stepper1: true,
     stepper2: false,
-    stepper3: false
+    stepper3: false,
+    Fullname: '',
+    Email: '',
+    Message: '',
+    error_Fullname: '',
+    error_Email: '',
+    error_Message: '',
+    error: '',
+    sendSuccess: ''
   }),
   methods: {
-    sendMsg (e) {
+    async sendMsg (e) {
       e.preventDefault()
+      this.sendSuccess = ''
+      this.error_Fullname = ''
+      this.error_Email = ''
+      this.error_Message = ''
+      this.error = ''
       this.btnDisabled = true
-      this.preloaderSwitch = !this.preloaderSwitch
-      console.log(`true from sendMsg`)
+      this.preloaderSwitch = true
+      var go = true
+      if (this.Fullname.length === 0) {
+        this.error_Fullname = 'Fullname field is required'
+        go = false
+      }
+      if (this.Email.length === 0) {
+        this.error_Email = 'Email field is required'
+        go = false
+      }
+      if (this.Message.length === 0) {
+        this.error_Message = 'Message field is required'
+        go = false
+      }
+      if (go === true) {
+        try {
+          const response = await UserSendContact.sendContact({
+            fullname: this.Fullname,
+            email: this.Email,
+            message: this.Message
+          })
+          console.log(response.data)
+          this.sendSuccess = response.data.success
+          this.timeOut()
+          this.alert()
+          this.Fullname = ''
+          this.Email = ''
+          this.Message = ''
+        } catch (error) {
+          this.error = error.response.data.error
+          this.error_Email = error.response.data.error_Email
+          this.timeOut()
+        }
+      } else {
+        this.timeOut()
+      }
     },
     collapseStepper (stepperNo) {
       switch (stepperNo) {
@@ -132,6 +183,15 @@ export default {
           this.stepper3 = !this.stepper3
           break
       }
+    },
+    timeOut () {
+      setTimeout(() => {
+        this.btnDisabled = false
+        this.preloaderSwitch = false
+      }, 2300)
+    },
+    alert () {
+      this.$swal('Nice!', this.sendSuccess, 'success')
     }
   },
   components: {

@@ -1,6 +1,11 @@
 <template>
   <div class="content">
-      {{msg}}
+    <div class="row">
+      <div class="">
+      </div>
+      <div>
+      </div>
+    </div>
   </div>
 </template>
 
